@@ -1,0 +1,46 @@
+<div>
+  <ng-container *ngIf="normalInput === true">
+    <div class="form-group">
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="label !== ''">
+          <label for="">{{label}} <ng-container *ngIf="required"><span class="text-danger">*</span></ng-container>
+          </label>
+        </ng-container>
+        <div class="ms-auto text-danger lh15" *ngIf="errorText !== ''">
+          <small>{{errorText}}</small>
+        </div>
+        <div class="ms-auto d-flex align-items-center mh16">
+          <div class="mandatory-text" *ngIf="control?.control?.invalid && errorTrueNow">
+            {{control?.control?.errors | appFormError: errorText}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="primeInput === true">
+    <div class="form-group">
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="label !== ''">
+          <label for="">{{label}} <ng-container *ngIf="required"><span class="text-danger">*</span></ng-container>
+          </label>
+        </ng-container>
+        <div class="ms-auto text-danger lh15" *ngIf="errorText !== ''">
+          <small>{{errorText}}</small>
+        </div>
+        <div class="ms-auto d-flex align-items-center mh16">
+          <div class="mandatory-text" *ngIf="control?.control?.invalid && errorTrueNow">
+            {{control?.control?.errors | appFormError: errorText}}
+          </div>
+        </div>
+      </div>
+      <div class="input-group card" [ngClass]="{'disabled': btnClickedNow}">
+        <p-calendar class="primeng-control" [(ngModel)]="xvalue" name="{{name}}" [autofocus]="autofocus"
+          [showIcon]="true" [minDate]="minDateNow" [maxDate]="maxDateNow" readonly placeholder="{{placeholder}}"
+          (dateChange)="dateSelected()" [disabled]="btnClickedNow" [showTime]="showTimeNow"
+          [showSeconds]="showSecondsNow" [view]="year"
+          [ngClass]="{'border-danger': control?.control?.invalid && errorTrueNow}" (blur)="doBlur()" (focus)="doFocus()"
+          (keydown)="checkEnter($event)" #forminput [id]="name"></p-calendar>
+      </div>
+    </div>
+  </ng-container>
+</div>

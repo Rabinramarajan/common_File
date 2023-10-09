@@ -1,0 +1,114 @@
+$COMMON-WEB-primary: (
+    50 : #f0f5f3,
+    100 : #dae6e0,
+    200 : #c1d6cc,
+    300 : #a8c6b8,
+    400 : #95b9a8,
+    500 : #82ad99,
+    600 : #7aa691,
+    700 : #6f9c86,
+    800 : #65937c,
+    900 : #52836b,
+    A100 : #e8fff3,
+    A200 : #b5ffd9,
+    A400 : #82ffbf,
+    A700 : #69ffb2,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$COMMON-WEB-accent: (
+    50 : #f3fbff,
+    100 : #e2f5ff,
+    200 : #cfefff,
+    300 : #bce9ff,
+    400 : #ade4ff,
+    500 : #9fdfff,
+    600 : #97dbff,
+    700 : #8dd7ff,
+    800 : #83d2ff,
+    900 : #72caff,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #fafdff,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$COMMON-WEB-primary: mat.define-palette($COMMON-WEB-primary);
+$COMMON-WEB-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$COMMON-WEB-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$COMMON-WEB-theme: mat.define-light-theme((color: (primary: $COMMON-WEB-primary, accent: $COMMON-WEB-accent, warn: $COMMON-WEB-warn, )));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($COMMON-WEB-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--bs-font-family) !important;
+}
+
+:root {
+    --bs-primary:  #82ad99;
+    --bs-primary-rgb: 130, 173, 153;
+    --bs-secondary: #009643;
+    --bs-secondary-light: #D21034;
+    --bs-bg-background: #e6e6e6;
+    --bs-grid-header-bg: #808080;
+    --bs-grid-border: #b3b3b3;
+    --bs-grid-hover: #f2f2f2;
+    --bs-grid-text: #2d2d2d;
+    // --bs-input-border: #2d2d2d;
+    --bs-input-border: #808080;
+    --bs-body-font-size: 0.875rem;
+    --bs-label-color: #878787;
+    --bs-font-barlow: 'Barlow', sans-serif;
+}

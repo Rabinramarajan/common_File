@@ -1,0 +1,17 @@
+{
+    "applicationPath": "",
+    "adminPath": "",
+    "baseAppPath": "/",
+    "imagePath": "",
+    "encrypt": true,
+    "maxFileSize3MB": 3145728,
+    "maxFileSize10MB": 10000760,
+    "fileSizeErrorMsg10MB": "Upload File size Below 10 MB",
+    "fileSizeErrorMsg3MB": "Upload File size Below 3 MB",
+    "fileAccept": "application/pdf, image/*",
+    "fileAcceptPDF": "application/pdf",
+    "serverDateFormat": "dd-MM-yyyy",
+    "serverDateFormatWithTime": "dd-MM-yyyy HH:mm",
+    "dateViewFormat": "dd MMM yyyy", 
+    "dateViewFormatWithTime": "dd MMM yyyy HH:mm"
+  }

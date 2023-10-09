@@ -1,0 +1,99 @@
+<div>
+  <ng-container *ngIf="matInput === true">
+    <mat-form-field [ngClass]="{'mat-form-field-invalid': control?.control?.invalid && errorTrueNow}"
+      class="mat-input-box">
+      <mat-label class="form-label">{{label}}<span *ngIf="requiredNow && label !==''"> *</span></mat-label>
+      <input matInput autocomplete="none" appNoEmoji [appUpperCase]="upperCase && !lowerCase"
+        [appLowerCase]="lowerCase && !upperCase" [appLimit]="maxlength" [autofocus]="autofocus"
+        [disabled]="btnClickedNow" [(ngModel)]="value" name="{{name}}"
+        [ngClass]="{'border-danger': control?.control?.invalid && errorTrueNow}" appEmptySpaceHandler (blur)="doBlur()"
+        (focus)="doFocus()" (keydown)="checkEnter($event)" #forminput [id]="name">
+      <mat-hint *ngIf="control?.control?.invalid && errorTrueNow" class="mat-hint-error">
+        mandatory
+      </mat-hint>
+
+      <div matSuffix *ngIf="btnClickedNow === false">
+        <ng-container *ngIf="search">
+          <a mat-icon-button class="i-btn-search" (click)="doSearch()" matTooltip="Search" matTooltipPosition="right">
+            <mat-icon class="material-symbols-outlined">
+              search
+            </mat-icon>
+          </a>
+        </ng-container>
+        <a mat-icon-button (click)="onClear()" matTooltip="Clear" class="clear-btn">
+          <mat-icon class="material-symbols-outlined">
+            close
+          </mat-icon>
+        </a>
+      </div>
+      <!-- </ng-container> -->
+    </mat-form-field>
+  </ng-container>
+  <ng-container *ngIf="normalInput === true">
+    <div class="form-group">
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="label !== ''">
+          <label for="">{{label}} <ng-container *ngIf="required"><span class="text-danger">*</span></ng-container>
+          </label>
+        </ng-container>
+        <div class="ms-auto text-danger lh15" *ngIf="errorText !== ''">
+          <small>{{errorText}}</small>
+        </div>
+        <div class="ms-auto d-flex align-items-center mh16">
+          <div class="mandatory-text" *ngIf="control?.control?.invalid && errorTrueNow">
+            {{control?.control?.errors | appFormError: errorText}}
+          </div>
+        </div>
+      </div>
+      <div class="input-group" [ngClass]="{'with-search': search, 'disabled': btnClickedNow}">
+        <input type="text" class="form-control" autocomplete="none" appNoEmoji appEmptySpaceHandler
+          [appUpperCase]="upperCase && !lowerCase" [appLowerCase]="lowerCase && !upperCase" [appLimit]="maxlength"
+          [autofocus]="autofocus" [disabled]="btnClickedNow" [(ngModel)]="value" name="{{name}}"
+          placeholder="{{placeholder}}" [class.highlighted]="value !== '' && value !== undefined"
+          [ngClass]="{'border-danger': control?.control?.invalid && value === '' && errorTrueNow}" (blur)="doBlur()"
+          (focus)="doFocus()" (keydown)="checkEnter($event)" #forminput [id]="name">
+        <div class="input-group-append">
+          <ng-container *ngIf="search">
+            <div class="search-btn" matRipple="!btnClickedNow" (click)="doSearch()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                  d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0034.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 00327.3 362.6l94.09 94.09a25 25 0 0035.3-35.3zM97.92 222.72a124.8 124.8 0 11124.8 124.8 124.95 124.95 0 01-124.8-124.8z" />
+              </svg>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="searchIcon === true">
+            <a class="search-btn" (click)="onSearchIcon()" matTooltip="Search" matTooltipPosition="right">
+              <ion-icon name="search"></ion-icon>
+            </a>
+          </ng-container>
+          <ng-container *ngIf="searchIcon !== true">
+            <a class="i-btn" (click)="value = ''" matTooltip="Clear" matTooltipPosition="right">
+              <div class="ibtn" matRipple (click)="onClear()">
+                <ion-icon name="close"></ion-icon>
+              </div>
+            </a>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- <ng-container *ngIf="primeInput === true">
+    <span class="form-group">
+      <div class="flex flex-column">
+        <label htmlFor="{{label}}" class="">{{label}}</label>
+        <div class="input-group p-input-icon-right" [ngClass]="{'with-search': search, 'disabled': btnClickedNow}">
+          <input type="text" pInputText class="form-control" autocomplete="none" appNoEmoji appEmptySpaceHandler
+            [appUpperCase]="upperCase && !lowerCase" [appLowerCase]="lowerCase && !upperCase" [appLimit]="maxlength"
+            [autofocus]="autofocus" [disabled]="btnClickedNow" [(ngModel)]="value" name="{{name}}"
+            placeholder="{{placeholder}}"
+            [ngClass]="{'border-danger': control?.control?.invalid && value === '' && errorTrueNow}" (blur)="doBlur()"
+            (focus)="doFocus()" (keydown)="checkEnter($event)" #forminput [id]="name" />
+          <ng-container *ngIf="searchIcon === true">
+          <i class="pi pi-search"></i>
+          </ng-container>
+        </div>
+      </div>
+    </span>s
+  </ng-container> -->
+</div>
