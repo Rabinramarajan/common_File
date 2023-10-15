@@ -17,6 +17,9 @@ export class DataControlComponent extends FormInputControl implements OnInit {
   @Input() public dob = false;
   @Input() public showTimeNow = false;
   @Input() public showSecondsNow = false;
+  @Input() public dateFormat = '';
+
+  // dateFormat: any = '';
 
   minDateNow: any = '';
   maxDateNow: any = '';
@@ -76,13 +79,15 @@ export class DataControlComponent extends FormInputControl implements OnInit {
   ngOnInit(): void {
     debugger
     console.log(this.year);
-    
+
     this.setValidate(this.control);
     this.viewValueChange().subscribe(async (xvalue) => {
       if (xvalue) {
         if (this.value !== "") {
-          let parseDateFormat = await this.getDateFormat(this.value);
+          debugger
+          let parseDateFormat = await this.getDateFormat(this.value); 
           this.xvalue = parse(this.value, parseDateFormat, new Date());
+          
         } else {
           this.xvalue = "";
         }
@@ -109,5 +114,10 @@ export class DataControlComponent extends FormInputControl implements OnInit {
     } else {
       this.value = xdate;
     }
+  }
+
+  onLocalClear() {
+    this.xvalue = '';
+    this.onClear();
   }
 }

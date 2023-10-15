@@ -11,6 +11,7 @@ import { FormDirectiveModule } from '../form-directive/form-directive.module';
 import { Platform } from '@angular/cdk/platform';
 import { CustomDateAdapter } from './custom-date-adapter';
 import { CalendarModule } from 'primeng/calendar';
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 export const DATE_CONFIG = new InjectionToken("Date Format", {
   factory: () => {
@@ -42,7 +43,8 @@ export const MY_FORMATS = {
     MatIconModule,
     MatRippleModule,
     FormPipeModule,
-    FormDirectiveModule
+    FormDirectiveModule,
+    MatDatepickerModule
   ],
   providers: [
     {

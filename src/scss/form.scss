@@ -211,6 +211,7 @@ input[type="password"]::-ms-clear {
                 width: 60px;
                 display: flex;
                 flex-direction: row-reverse;
+                align-items: center;
             }
 
             .form-control {
@@ -242,15 +243,33 @@ input[type="password"]::-ms-clear {
             border-radius: 5px;
             overflow: hidden;
 
+            // .ibtn,
+            // .search-btn,
+            // .eye-btn {
+            //     display: none;
+            //     position: relative;
+            //     width: 40px;
+            //     height: 34px;
+            //     padding-right: 15px;
+            //     // display: flex;
+            //     align-items: center;
+            //     justify-content: center;
+            //     cursor: pointer;
+
+            //     ion-icon {
+            //         color: var(--bs-secondary);
+            //         font-size: 17px;
+            //     }
+            // }
+
             .ibtn,
             .search-btn,
             .date-btn,
             .eye-btn {
                 display: none;
                 position: relative;
-                width: 40px;
-                height: 34px;
-                padding-right: 15px;
+                width: 30px;
+                height: 30px;
                 // display: flex;
                 align-items: center;
                 justify-content: center;
@@ -264,13 +283,20 @@ input[type="password"]::-ms-clear {
 
             .date-btn {
                 display: flex;
+                position: relative;
+                width: 22px;
+                height: 22px;
+                // display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                margin-right: 5px;
 
                 svg {
-                    fill: var(--bs-grid-text);
 
-                    rect,
+                    fill: #49454f rect,
                     path {
-                        stroke: var(--bs-grid-text);
+                        stroke: var(--bs-primary);
                     }
                 }
             }

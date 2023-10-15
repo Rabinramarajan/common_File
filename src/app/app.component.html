@@ -5,9 +5,8 @@
                 [(ngModel)]="title" name="title" [required]="true" [errorTrue]="errorTrue"></app-input-control>
         </div>
         <div>
-            <app-data-control [primeInput]="true" label="Date of Birth" placeholder="Enter Your First Name"
-                [(ngModel)]="dob" name="dob" [maxDate]="beginDate"
-                (change)="setValue(dob);"></app-data-control>
+            <app-data-control [normalInput]="true" label="Date of Birth" placeholder="Enter Your First Name"
+                [(ngModel)]="dob" name="dob" [maxDate]="beginDate"></app-data-control>
         </div>
         <div>
             <button>Submit</button>
