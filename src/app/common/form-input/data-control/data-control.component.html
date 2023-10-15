@@ -17,27 +17,23 @@
       </div>
       <div class="input-group with-date" [ngClass]="{'disabled': btnClickedNow}">
         <input type="text" class="form-control" [(ngModel)]="xvalue" name="{{name}}" placeholder="{{placeholder}}"
-            readonly [matDatepicker]="picker" (click)="picker.open()" [autofocus]="autofocus"
-            (dateChange)="dateSelected()" readonly [disabled]="btnClickedNow"
-            [ngClass]="{'border-danger': control?.control?.invalid && errorTrueNow}" (blur)="doBlur()"
-            (focus)="doFocus()" (keydown)="checkEnter($event)" #forminput [min]="minDateNow" [max]="maxDateNow"
-            [id]="name" />
+          readonly [matDatepicker]="picker" (click)="picker.open()" [autofocus]="autofocus"
+          (dateChange)="dateSelected()" readonly [disabled]="btnClickedNow"
+          [ngClass]="{'border-danger': control?.control?.invalid && errorTrueNow}" (blur)="doBlur()" (focus)="doFocus()"
+          (keydown)="checkEnter($event)" #forminput [min]="minDateNow" [max]="maxDateNow" [id]="name" />
         <div class="input-group-append">
-            <div class="date-btn" matRipple="!btnClickedNow" (click)="picker.open()">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M352.817 746Q312 746 284 717.817q-28-28.183-28-69T284.183 580q28.183-28 69-28T422 580.183q28 28.183 28 69T421.817 718q-28.183 28-69 28ZM180 976q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600V486H180v430Z"/></svg>
-            </div>
-            <div class="ibtn" matRipple (click)="onLocalClear()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="32" d="M368 368L144 144M368 144L144 368" />
-                </svg>
-            </div>
+          <div class="date-btn" matRipple="!btnClickedNow" (click)="picker.open()">
+            <ion-icon src="assets/svg/calendar_icon.svg"></ion-icon>
+          </div>
+          <div class="ibtn" matRipple="!btnClickedNow" (click)="onLocalClear()">
+            <ion-icon name="close"></ion-icon>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   </ng-container>
   <ng-container *ngIf="primeInput === true">
-    <div class="form-group">
+    <div class="primeInput-group">
       <div class="d-flex align-items-center">
         <ng-container *ngIf="label !== ''">
           <label for="">{{label}} <ng-container *ngIf="required"><span class="text-danger">*</span></ng-container>
@@ -57,11 +53,33 @@
           [showIcon]="true" [minDate]="minDateNow" [maxDate]="maxDateNow" readonly placeholder="{{placeholder}}"
           (dateChange)="dateSelected()" [disabled]="btnClickedNow" [dateFormat]="dateFormat"
           [ngClass]="{'border-danger': control?.control?.invalid && errorTrueNow}" (blur)="doBlur()" (focus)="doFocus()"
-          (keydown)="checkEnter($event)" #forminput [id]="name"></p-calendar>
+          (keydown)="checkEnter($event)" #forminput [id]="name" [showButtonBar]="showButton"></p-calendar>
       </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="matInput === true">
+    <div>
+      <mat-form-field [ngClass]="{'mat-form-field-invalid': control?.control?.invalid && errorTrueNow}" class="mat-input-box">
+        <mat-label class="form-label">{{label}}<span *ngIf="requiredNow && label !==''"> *</span></mat-label>
+        <input type="text" matInput [(ngModel)]="xvalue" name="{{name}}" placeholder="{{placeholder}}" readonly
+          [matDatepicker]="picker" (click)="picker.open()" [autofocus]="autofocus" (dateChange)="dateSelected()"
+          [disabled]="btnClickedNow" [ngClass]="{'border-danger': control?.control?.invalid && errorTrueNow}"
+          (blur)="doBlur()" (focus)="doFocus()" (keydown)="checkEnter($event)" #forminput [min]="minDateNow"
+          [max]="maxDateNow" [id]="name" [errorStateMatcher]="matcher" />
+        
+        <div matSuffix>
+          <a mat-icon-button (click)="onLocalClear()" matTooltip="Clear" class="ibtn">
+            <ion-icon name="close"></ion-icon>
+          </a>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        </div>
+        <mat-hint *ngIf="control?.control?.invalid && errorTrueNow" class="mat-hint-error flex align-items-center justify-content-end">
+          mandatory
+        </mat-hint>
+      </mat-form-field>
     </div>
   </ng-container>
 </div>
 
-<mat-datepicker #picker [disabled]="btnClickedNow" >
+<mat-datepicker #picker [disabled]="btnClickedNow">
 </mat-datepicker>

@@ -18,6 +18,7 @@ export class DataControlComponent extends FormInputControl implements OnInit {
   @Input() public showTimeNow = false;
   @Input() public showSecondsNow = false;
   @Input() public dateFormat = '';
+  @Input() public showButton = false;
 
   // dateFormat: any = '';
 

@@ -13,14 +13,17 @@ import { FormPipeModule } from "./form-pipe/form-pipe.module";
 import { InputTextModule } from 'primeng/inputtext';
 import { DataControlComponent } from './data-control/data-control.component';
 import { DataControlModule } from './data-control/data-control.module';
+import { SelectControlComponent } from './select-control/select-control.component';
 
 @NgModule({
     declarations: [
         InputControlComponent,
+        SelectControlComponent,
     ],
     exports: [InputControlComponent,
         DataControlModule,
-        FormsModule,],
+        FormsModule,
+        SelectControlComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         CommonModule,

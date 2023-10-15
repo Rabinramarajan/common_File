@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = '';
-  dob = '10-10-2023';
+  dob = '';
   errorTrue = false;
   beginDate: any;
 

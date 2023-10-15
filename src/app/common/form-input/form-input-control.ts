@@ -1,6 +1,16 @@
 import { Directive, ElementRef, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { NgControl, Validators } from "@angular/forms";
+import { FormControl, FormGroupDirective, NgControl, NgForm, Validators } from "@angular/forms";
 import { FormAccessorBase } from "./form-accessor-base";
+import { ErrorStateMatcher } from "@angular/material/core";
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): any {
+        const isSubmitted = form && form.disabled && form.submitted
+        return !!(control && control.invalid && isSubmitted);
+        // return (control && control.invalid);
+    }
+}
+
 
 @Directive()
 
@@ -8,6 +18,7 @@ export class FormInputControl extends FormAccessorBase{
     xcontrol: any = NgControl;
     // Core Input
     @Input() name = "";
+    matcher = new MyErrorStateMatcher();
     @Input() matInput = false;
     @Input() normalInput = false;
     @Input() primeInput = false;
